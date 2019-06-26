@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+Welcome, {{request.user.username}}
+  <ul>
+    <li>
+      <a href="{% url 'query_upload' %}">Query File Upload</a>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <a href="{% url 'database_upload' %}">Database File Upload</a>
+    </li>
+  </ul>
+
+  <form method="POST">
+    {% csrf_token %}
+    <select name="query">
+    <option value="">- Select Query -
+    {% if filelist %}
+	{% for file in filelist %}
+              <option type="text" value="{{file}}">{{file}}</option>
+        {% endfor %}
+    {% endif %}
+    </select><br>
+    <input type="radio" name="aoption" value="True"> Query will be added to the library<br>
+    <input type="radio" name="aoption" value="False" checked> Query will NOT be added to the library<br>
+    <input type="submit" value="Run query search"><br>
+  </form>
+  
+  <p>Stored files:</p>
+    <a href="{% url 'uploaded' %}">Query Files Uploaded</a>
+  <p>Generated results:</p>
+    <a href="{% url 'result' %}">Get Generated Results</a>
+{% endblock %}

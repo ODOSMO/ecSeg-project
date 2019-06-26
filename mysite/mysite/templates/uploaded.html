@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+Uploaded Queries: 
+
+{% for file in filelist %}
+  <br>
+  <a href="{% url 'download' file %}" >{{ file }}</a>
+{% endfor %}
+
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}
