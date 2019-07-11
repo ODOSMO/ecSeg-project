@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head background = "need to do">
+    <style>
+    .center{
+	margin: auto;
+	width: 60%;
+	padding: 50px;
+    }
+    h1{
+	width: 180px;
+        padding: 30px;
+        font-family: fantasy, cursive, serif;
+	background-color: gold;
+        color: #483D8B;
+    }
+    body{
+	background-image: url('need to do');
+	  /* Full height */
+  	height: 100%;
+	opacity: 0.5
+  	/* Center and scale the image nicely */
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+	
+        padding-left: 25px;
+    }
+    </style>
+    <meta charset="utf-8">
+    <title>{% block title %}WebecSeg{% endblock %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <div class = "center">
+    <header>
+      <h1>WebecSeg</h1>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
+      {% endif %}
+      <hr>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+    </div>
+  </body>
+</html>
